@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fwk id="Nitronet" version="1.0-dev">
+    <listener class="Fwk\Core\CoreListener" />
+    <listener class="Fwk\Core\Components\Console\ConsoleListener" />
+    <listener class="Fwk\Core\Components\PropertiesListener" />
+    <listener class="Fwk\Core\Components\Bootstrap\BootstrapListener" />
+    <listener class="Fwk\Core\Components\UrlRewriter\UrlRewriterListener" />
+    <listener class="Fwk\Core\Components\ResultType\ResultTypeListener" />
+    <listener class="Fwk\Core\Components\ExtendsListener" />
+
+   <!-- <extends path="./lib/OtherApp" /> -->
+
+    <bootstrap type="Fwk\Core\Components\Bootstrap\ClassBootstrapper">
+        Nitronet\runtime\Bootstrap
+    </bootstrap>
+
+    <properties>
+        <property name="theme">origin</property>
+
+        <property name="nitronet.db.name">nnblog</property>
+
+        <property name="github.baseurl">https://github.com</property>
+
+        <property name="curl.proxyhost"></property>
+        <property name="curl.proxyuser" />
+        <property name="curl.proxypass" />
+        
+        <property name="blog.name">nitronet</property>
+        <property name="blog.author">neiluJ</property>
+        <property name="blog.repository">https://github.com/nitronet/nitronet.org.git</property>
+        <property name="blog.workdir">/home/neiluj/www/njblog/workdir</property>
+    </properties>
+
+    <result-types>
+        <result-type
+            name="template"
+            class="Fwk\Core\Components\ResultType\Types\PhpFile">
+            <param name="templatesDir">:packageDir/themes/:theme</param>
+        </result-type>
+    </result-types>
+
+    <actions>
+        <action name="Home" class="Nitronet\actions\Homepage" method="show">
+            <result type="template" name="success">
+                <param name="file">pages/homepage.phtml</param>
+            </result>
+        </action>
+    </actions>
+
+    <commands>
+        <command name="blog:init" class="Nitronet\commands\BlogInit" />
+        <command name="blog:update" class="Nitronet\commands\BlogUpdate" />
+    </commands>
+
+    <url-rewrite>
+        <url route="/$" action="Home" />
+        <url route="/$" action="Home" />
+        <url route="/$" action="Home" />
+    </url-rewrite>
+</fwk>

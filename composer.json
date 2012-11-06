@@ -1,0 +1,17 @@
+{
+    "require": {
+        "php": ">=5.3.0",
+        "fwk/core": "dev-master",
+        "fwk/xml": "dev-master",
+        "fwk/db": "dev-master", 
+	"symfony/console": "dev-master",
+        "symfony/process": "dev-master",
+        "dflydev/markdown": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Nitronet": ""
+        }
+    },
+    "minimum-stability": "dev"
+}

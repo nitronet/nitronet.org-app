@@ -1,0 +1,122 @@
+html, html body {
+	background: #eee url(../images/grey.png) left top repeat;
+	color: #666;
+}
+
+@font-face {
+  font-family: 'Rokkitt-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rokkitt'), url(./fonts/Rokkitt-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Rokkitt-Bold';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Rokkitt Bold'), url(./fonts/Rokkitt-Bold.ttf);
+}
+
+div.container {
+	display: block;
+	width: 780px;
+	margin: 0 auto;
+	margin-top: 60px;
+}
+
+#footer {
+	margin-top: 60px;
+	padding-top: 10px;
+	border-top: dotted 1px #ccc;
+	color: #aaa;
+	font-family: 'Rokkitt-Regular';
+}
+
+h1, h2 {
+	font-family: 'Rokkitt-Bold';
+	font-size: 2em;
+	color: #666;
+}
+
+h2 {
+	font-family: 'Rokkitt-Bold';
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
+
+h1 a, h2 a {
+	text-decoration:none;
+	color: inherit;
+	font-weight:bold;
+}	
+
+h1 span {
+	font-family: 'Rokkitt-Regular';
+	font-size: 0.5em;
+	margin-left: 15px;
+	padding-left: 15px;
+	border-left: solid 1px #ccc;
+	vertical-align:middle;
+	color: #666;
+	text-shadow:none;
+}
+
+.rightside {
+	float:right;
+	margin-top: 10px;
+}
+
+.rkktt {
+	font-family: 'Rokkitt-Regular';
+	font-size: 1em;
+	vertical-align:middle;
+	color: #666;
+}
+
+
+@keyframes shadowBlur {
+  from {
+    text-shadow: inherit;
+  }
+
+  to {
+    text-shadow: 0 0 3px #333;
+  }
+}
+
+#head h1 {
+	text-shadow: 0 0 1px #333;
+}
+
+#head h1 a:hover {
+	animation-duration: 0.5s;
+  	animation-name: shadowBlur;
+	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+
+p { 
+	font-family: 'Rokkitt-Regular', Helvetica, Verdana, sans-serif;
+	font-size: 1em;
+	line-height: 20px;
+}
+
+h2 a:hover {
+	animation-duration: 0.5s;
+  	animation-name: shadowBlur;
+	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+
+li .rightside { 
+	margin-top: 0; 
+	color: #ccc;
+}
+
+#main>ul>li { margin-bottom: 20px; }
+
+#footer a { text-decoration:none; color: inherit; }
+#footer a:hover {
+	color: #666;
+}
+

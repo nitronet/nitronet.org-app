@@ -30,6 +30,8 @@ class BlogUpdate extends BaseCommand
             throw new \RuntimeException("Repository directory doesn't exist. Please run blog:init instead.");
         }
         
+        $git = $this->getServices()->get('git');
         
+        var_dump($git->getTreeHash());
     }
 }

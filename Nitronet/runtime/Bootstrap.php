@@ -9,22 +9,32 @@ class Bootstrap
 {
     public function registerBlogConfig(Application $app)
     {
-        $config = new \Fwk\Core\Object();
-        foreach ($app->rawGetAll() as $key => $value) {
-            if (strpos($key, 'blog.') === false) {
-                continue;
+        $app->getServices()->set('blogCfg', function() use ($app) {
+            $config = new \Fwk\Core\Object();
+            foreach ($app->rawGetAll() as $key => $value) {
+                if (strpos($key, 'blog.') === false) {
+                    continue;
+                }
+
+                $config->set($key, $value);
             }
             
-            $config->set($key, $value);
-        }
-        
-        $app->getServices()->set('blogCfg', $config);
+            return $config;
+        });
     }
     
     public function registerDatabase(Application $app)
     {
     }
 
+    public function registerGitService(Application $app)
+    {
+         $app->getServices()->set('git', function() use ($app) {
+            $git = new GitService($app->get('blog.workdir') .'/repo');
+            
+            return $git;
+        });
+    }
     /**
      *
      * @param Application $app

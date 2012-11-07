@@ -26,7 +26,8 @@
         <property name="curl.proxypass" />
 
         <property name="blog.name">nitronet</property>
-        <property name="blog.author">neiluJ</property>
+        <property name="blog.description">Le weblog de neiluJ</property>
+        <property name="blog.link">http://nitronet.org</property>
         <property name="blog.repository">https://github.com/nitronet/nitronet.org.git</property>
         <property name="blog.workdir">/home/neiluj/www/njblog/workdir</property>
     </properties>
@@ -65,6 +66,8 @@
                 <param name="file">pages/error.phtml</param>
             </result>
         </action>
+        
+        <action name="RssFeed" class="Nitronet\actions\RssFeed" method="show" />
     </actions>
 
     <commands>
@@ -74,6 +77,7 @@
 
     <url-rewrite>
         <url route="/$" action="Home" />
+        <url route="/rss.xml$" action="RssFeed" />
         <url route="/article/:articleSlug$" action="ArticleView">
             <param name="articleSlug" regex=".*" required="true" />
         </url>

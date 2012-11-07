@@ -17,13 +17,7 @@
     <properties>
         <property name="theme">origin</property>
 
-        <property name="nitronet.db.name">nnblog</property>
-
         <property name="github.baseurl">https://github.com</property>
-
-        <property name="curl.proxyhost"></property>
-        <property name="curl.proxyuser" />
-        <property name="curl.proxypass" />
 
         <property name="blog.name">nitronet</property>
         <property name="blog.description">Le weblog de neiluJ</property>

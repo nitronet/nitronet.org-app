@@ -8,8 +8,6 @@ use Symfony\Component\Console\Input\InputOption;
 
 class BlogUpdate extends BaseCommand
 {
-    const REPOSITORY_DIR    = 'repo';
-
     protected function configure()
     {
         $this->setName('blog:update')
@@ -32,7 +30,7 @@ class BlogUpdate extends BaseCommand
             throw new \RuntimeException("Working directory doesn't exist. Please run blog:init instead.");
         }
 
-        $repodir = $workdir . DIRECTORY_SEPARATOR . self::REPOSITORY_DIR;
+        $repodir = $workdir;
         if (!is_dir($repodir)) {
             throw new \RuntimeException("Repository directory doesn't exist. Please run blog:init instead.");
         }

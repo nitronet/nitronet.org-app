@@ -22,17 +22,13 @@ class BlogInit extends BaseCommand
             throw new \RuntimeException("Blog already initialized");
         }
 
-        $output->writeln("Initializing working directory.");
-        if(!mkdir($workdir, 0777, true)) {
-            throw new \RuntimeException(sprintf("Unable to create directory %s", $workdir));
-        }
-
-        $repodir = $workdir . DIRECTORY_SEPARATOR . BlogUpdate::REPOSITORY_DIR;
+        $repodir = $workdir;
         $repoUrl = $cfg->get('blog.repository');
         if (!$repoUrl) {
             throw new \RuntimeException("Missing blog.repository configuration.");
         }
-        $output->writeln(sprintf("Clonning repository %s ...", $repoUrl));
+        
+        $output->writeln(sprintf("Clonning repository %s into workdir ...", $repoUrl));
 
         $cmd = sprintf("git clone %s %s", $repoUrl, $repodir);
         $proc = new \Symfony\Component\Process\Process($cmd);

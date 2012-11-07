@@ -24,7 +24,7 @@ class Bootstrap
 
     public function registerGitService(Application $app)
     {
-        $git = new GitService($app->get('blog.workdir') .'/repo');
+        $git = new GitService($app->get('blog.workdir'));
         $builder = new BuilderService($git);
 
         $app->getServices()->set('git', $git);

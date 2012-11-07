@@ -33,15 +33,6 @@ abstract class AppController implements ServicesAware, Preparable, ContextAware
     }
 
     /**
-     *
-     * @return array
-     */
-    public function getPackages()
-    {
-        return $this->services->get('packagesDao')->getAllPackages();
-    }
-
-    /**
      * @return Object
      */
     public function getServices()

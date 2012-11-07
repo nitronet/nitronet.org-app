@@ -14,26 +14,6 @@ abstract class BaseCommand extends Command implements ServicesAware
     protected $services;
 
     /**
-     *
-     * @param string $xmlContents
-     * @param \Fwk\Xml\Map $map
-     *
-     * @return array
-     */
-    public function parseXml($xmlContents, Map $map)
-    {
-        $tmpFile    = tempnam(sys_get_temp_dir(), 'fwkxml-');
-        file_put_contents($tmpFile, $xmlContents);
-
-        $xml        = new XmlFile($tmpFile);
-        $results    = $map->execute($xml);
-
-        unlink($tmpFile);
-
-        return $results;
-    }
-
-    /**
      * @return \Fwk\Core\Object
      */
     public function getServices()

@@ -55,6 +55,16 @@
                 <param name="file">pages/error.phtml</param>
             </result>
         </action>
+
+        <action name="ArticleView" class="Nitronet\actions\ArticleView" method="show">
+            <result type="template" name="success">
+                <param name="file">pages/article.phtml</param>
+            </result>
+
+            <result type="template" name="error">
+                <param name="file">pages/error.phtml</param>
+            </result>
+        </action>
     </actions>
 
     <commands>
@@ -64,6 +74,9 @@
 
     <url-rewrite>
         <url route="/$" action="Home" />
+        <url route="/article/:articleSlug$" action="ArticleView">
+            <param name="articleSlug" regex=".*" required="true" />
+        </url>
         <url route="/:pageSlug$" action="PageView">
             <param name="pageSlug" regex=".*" required="true" />
         </url>

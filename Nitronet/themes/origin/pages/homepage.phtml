@@ -10,33 +10,14 @@ include __DIR__ .'/../header.phtml';
 ?>
 <div class="container" id="main">
     <ul>
+        <?php foreach ($this->articles as $article): ?>
         <li>
-            <p class="rightside rkktt">12 Mars 2012</p>
+            <p class="rightside rkktt"><?php echo $article->getDateRelativeCreated(); ?></p>
 
-            <h2><a href="#">Ceci est le titre d'un post du blog</a></h2>
+            <h2><a href="<?php echo $this->basePath; ?>/index.php/article/<?php echo $article->getSlug(); ?>"><?php echo htmlspecialchars($article->getTitle()); ?></a></h2>
             <p>Hello cutie pie. One of us is in deep trouble. Only pain. You're a fucking choir boy compared to me.</p>
         </li>
-
-        <li>
-            <p class="rightside rkktt">12 Mars 2012</p>
-
-            <h2><a href="#">Ceci est le titre d'un post du blog</a></h2>
-            <p>Hello cutie pie. One of us is in deep trouble. Only pain. You're a fucking choir boy compared to me. A choir boy!! Gimme the god.</p>
-        </li>
-
-        <li>
-            <p class="rightside rkktt">12 Mars 2012</p>
-
-            <h2><a href="#">Ceci est le titre d'un post du blog</a></h2>
-            <p>Hello cutie pie. One of us is in deep trouble. Only pain. You're a fucking choir boy compared to me. I want my baby. There is no bathroom. Come on you piece of shit. Come on you piece of shit.</p>
-        </li>
-
-        <li>
-            <p class="rightside rkktt">12 Mars 2012</p>
-
-            <h2><a href="#">Ceci est le titre d'un post du blog</a></h2>
-            <p>Hasta la vista baby. Of course. I'm a Terminator. Only pain. I'm back. I'll be back. I'll be back. Get down.</p>
-        </li>
+        <?php endforeach; ?>
     </ul>
 </div>
 <?php

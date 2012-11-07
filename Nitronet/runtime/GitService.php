@@ -36,17 +36,7 @@ class GitService
      */
     public function __construct($repositoryDir)
     {
-        if (!is_dir($repositoryDir)) {
-            throw new \RuntimeException(
-                sprintf(
-                    "Invalid directory %s",
-                    $repositoryDir
-                )
-            );
-        }
-
         $this->repositoryDir = $repositoryDir;
-        $this->loadInfos();
     }
 
     /**
@@ -54,6 +44,8 @@ class GitService
      */
     public function getTreeHash()
     {
+        $this->loadInfos();
+
         return $this->treeHash;
     }
 
@@ -64,45 +56,68 @@ class GitService
 
     public function getCommitHash()
     {
+        $this->loadInfos();
+
         return $this->commitHash;
     }
 
     public function getAuthor()
     {
+        $this->loadInfos();
+
         return $this->author;
     }
 
     public function getDateRelative()
     {
+        $this->loadInfos();
+
         return $this->dateRelative;
     }
 
     public function getDate()
     {
+        $this->loadInfos();
+
         return $this->date;
     }
 
     public function getAuthorEmail()
     {
+        $this->loadInfos();
+
         return $this->authorEmail;
     }
 
     public function getCommitter()
     {
+        $this->loadInfos();
+
         return $this->committer;
     }
 
     public function getCommitterEmail()
     {
+        $this->loadInfos();
+
         return $this->committerEmail;
     }
 
     protected function loadInfos()
     {
+       if (!is_dir($this->repositoryDir)) {
+           throw new \RuntimeException(
+               sprintf(
+                   "Invalid directory %s",
+                   $this->repositoryDir
+               )
+           );
+       }
+
        if (!isset($this->treeHash)) {
             $cmd = sprintf('%s show --format="%s" --no-ext-diff',
                 self::GIT_BIN,
-                "treeHash:%T;commitHash:%H;author:%an;authorEmail:%ae;dateRelative:%ar;date:%aD;committerEmail:%ce;committer:%cn"
+                "treeHash-|-%T;commitHash-|-%H;author-|-%an;authorEmail-|-%ae;dateRelative-|-%ar;date-|-%aD;committerEmail-|-%ce;committer-|-%cn"
             );
 
             $proc = $this->processFactory($cmd);
@@ -117,7 +132,7 @@ class GitService
 
             $tmp = explode(";", $line);
             foreach($tmp as $token) {
-                list($key, $value) = explode(":", $token);
+                list($key, $value) = explode("-|-", $token);
                 $this->{$key} = $value;
             }
         }
@@ -184,7 +199,7 @@ class GitService
 
         $cmd = sprintf('%s log --format="%s" --follow -- %s',
             self::GIT_BIN,
-            "commit:%H;message:%f;author:%an;authorEmail:%ae;dateCreated:%aD;dateCreatedRelative:%ar;committerEmail:%ce;committer:%cn%n",
+            "commit-|-%H;message-|-%f;author-|-%an;authorEmail-|-%ae;dateCreated-|-%aD;dateCreatedRelative-|-%ar;committerEmail-|-%ce;committer-|-%cn%n",
             $file
         );
 
@@ -208,7 +223,7 @@ class GitService
             $tmp = explode(";", $line);
 
             foreach ($tmp as $token) {
-                list($key, $value) = explode(":", $token);
+                list($key, $value) = explode("-|-", $token);
                 if(empty($key)) {
                     continue;
                 }

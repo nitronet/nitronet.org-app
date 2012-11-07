@@ -3,7 +3,7 @@ namespace Nitronet\models;
 
 use dflydev\markdown\MarkdownExtraParser;
 
-class Page
+class Publication
 {
     protected $slug;
 
@@ -15,7 +15,13 @@ class Page
 
     protected $updated_at;
 
+    protected $dateRelativeCreated;
+
+    protected $dateRelativeUpdated;
+
     protected $author;
+
+    protected $revision;
 
     public function getSlug() {
         return $this->slug;
@@ -70,4 +76,30 @@ class Page
     public function setAuthor($author) {
         $this->author = $author;
     }
+
+    public function getRevision() {
+        return $this->revision;
+    }
+
+    public function setRevision($revision) {
+        $this->revision = $revision;
+    }
+
+    public function getDateRelativeCreated() {
+        return $this->dateRelativeCreated;
+    }
+
+    public function setDateRelativeCreated($dateRelativeCreated) {
+        $this->dateRelativeCreated = $dateRelativeCreated;
+    }
+
+    public function getDateRelativeUpdated() {
+        return $this->dateRelativeUpdated;
+    }
+
+    public function setDateRelativeUpdated($dateRelativeUpdated) {
+        $this->dateRelativeUpdated = $dateRelativeUpdated;
+    }
+
+
 }

@@ -48,13 +48,8 @@ class BlogUpdate extends BaseCommand
 
         if ($newVersion === $currentVersion && !$force) {
             $output->writeln("<info>Everything is up to date.</info>");
-            return;
+        } else {
+            $output->writeln("<info>Blog is now up to date.</info>");
         }
-
-        $builder = new \Nitronet\runtime\BuilderService($git->getRepositoryDir());
-        $pages = $builder->getPages();
-        var_dump($pages);
-        
-        //var_dump($git->getFileCommits("pages/about_A+propos.md"));
     }
 }

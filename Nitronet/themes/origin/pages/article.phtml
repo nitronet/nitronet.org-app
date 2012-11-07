@@ -1,0 +1,34 @@
+<?php
+/**
+ * Layout variables
+ *
+ * - FWK_PAGE_TITLE
+ */
+$PAGE_TITLE = htmlspecialchars($this->article->getTitle()) ." - nitronet - Le blog de neiluJ";
+
+include __DIR__ .'/../header.phtml';
+?>
+<div class="container" id="main">
+    <p class="rightside rkktt"><?php echo $this->article->getCreated_at(); ?></p>
+
+    <h1><a href="<?php echo $this->basePath; ?>/index.php/article/<?php echo $this->article->getSlug(); ?>"><?php echo htmlspecialchars($this->article->getTitle()); ?></a></h1>
+    <p style="display: block; margin-bottom: 20px; color: #999;">Posted by <strong style="color: #666"><?php echo htmlspecialchars($this->article->getAuthor()); ?></strong>, <?php echo $this->article->getDateRelativeCreated(); ?>.</p>
+
+    <?php echo $this->article->getFormattedContent(); ?>
+</div>
+
+<div class="container" style="font-size: 10px; color: #ccc; margin-bottom: -50px;">
+    $ rev: <?php echo substr($this->article->getRevision(),0, 6); ?> by <?php echo htmlspecialchars($this->article->getAuthor()); ?>
+<?php
+$updated = $this->article->getUpdated_at();
+if(!empty($updated)): ?>
+    updated <?php echo $this->article->getDateRelativeUpdated(); ?>
+<?php else: ?>
+    created <?php echo $this->article->getDateRelativeCreated(); ?>
+<?php endif; ?>
+</div>
+<?php
+
+include __DIR__ .'/../footer.phtml';
+
+?>

@@ -11,6 +11,17 @@ include __DIR__ .'/../header.phtml';
 <div class="container" id="main">
     <?php echo $this->page->getFormattedContent(); ?>
 </div>
+
+<div class="container" style="font-size: 10px; color: #ccc; margin-bottom: -50px;">
+    $ rev: <?php echo substr($this->page->getRevision(),0, 6); ?> by <?php echo htmlspecialchars($this->page->getAuthor()); ?>
+<?php
+$updated = $this->page->getUpdated_at();
+if(!empty($updated)): ?>
+    updated <?php echo $this->page->getDateRelativeUpdated(); ?>
+<?php else: ?>
+    created <?php echo $this->page->getDateRelativeCreated(); ?>
+<?php endif; ?>
+</div>
 <?php
 
 include __DIR__ .'/../footer.phtml';

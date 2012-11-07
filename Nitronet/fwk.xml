@@ -6,9 +6,6 @@
     <listener class="Fwk\Core\Components\Bootstrap\BootstrapListener" />
     <listener class="Fwk\Core\Components\UrlRewriter\UrlRewriterListener" />
     <listener class="Fwk\Core\Components\ResultType\ResultTypeListener" />
-    <listener class="Fwk\Core\Components\ExtendsListener" />
-
-   <!-- <extends path="./lib/OtherApp" /> -->
 
     <bootstrap type="Fwk\Core\Components\Bootstrap\ClassBootstrapper">
         Nitronet\runtime\Bootstrap
@@ -16,8 +13,6 @@
 
     <properties>
         <property name="theme">origin</property>
-
-        <property name="github.baseurl">https://github.com</property>
 
         <property name="blog.name">nitronet</property>
         <property name="blog.description">Le weblog de neiluJ</property>

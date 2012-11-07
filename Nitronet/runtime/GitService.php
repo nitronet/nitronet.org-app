@@ -16,11 +16,17 @@ class GitService
     
     protected $commitHash;
     
+    protected $committer;
+    
+    protected $committerEmail;
+    
     protected $author;
     
     protected $dateRelative;
     
     protected $date;
+    
+    protected $authorEmail;
     
     /**
      *
@@ -59,22 +65,51 @@ class GitService
 
     public function getCommitHash()
     {
+        $this->loadInfos();
+        
         return $this->commitHash;
     }
 
     public function getAuthor()
     {
+        $this->loadInfos();
+        
         return $this->author;
     }
 
     public function getDateRelative()
     {
+        $this->loadInfos();
+        
         return $this->dateRelative;
     }
 
     public function getDate() 
     {
+        $this->loadInfos();
+        
         return $this->date;
+    }
+
+    public function getAuthorEmail()
+    {
+        $this->loadInfos();
+        
+        return $this->authorEmail;
+    }
+    
+    public function getCommitter()
+    {
+        $this->loadInfos();
+        
+        return $this->committer;
+    }
+
+    public function getCommitterEmail()
+    {
+        $this->loadInfos();
+        
+        return $this->committerEmail;
     }
 
     protected function loadInfos()
@@ -82,7 +117,7 @@ class GitService
        if (!isset($this->treeHash)) {
             $cmd = sprintf('%s show --format="%s" --no-ext-diff',
                 self::GIT_BIN,
-                "treeHash:%T;commitHash:%H;author:%an;dateRelative:%ar;date:%aD"
+                "treeHash:%T;commitHash:%H;author:%an;authorEmail:%ae;dateRelative:%ar;date:%aD;committerEmail:%ce;committer:%cn"
             );
             
             $proc = $this->processFactory($cmd);

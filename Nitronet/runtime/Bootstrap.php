@@ -3,7 +3,6 @@
 namespace Nitronet\runtime;
 
 use Fwk\Core\Application;
-use Fwk\Db\Connection;
 
 class Bootstrap
 {
@@ -18,41 +17,17 @@ class Bootstrap
 
                 $config->set($key, $value);
             }
-            
+
             return $config;
         });
-    }
-    
-    public function registerDatabase(Application $app)
-    {
     }
 
     public function registerGitService(Application $app)
     {
-         $app->getServices()->set('git', function() use ($app) {
-            $git = new GitService($app->get('blog.workdir') .'/repo');
-            
-            return $git;
-        });
-    }
-    /**
-     *
-     * @param Application $app
-     * 
-     * @return void 
-     */
-    public function registerCurlService(Application $app)
-    {
-        if (php_sapi_name() != "cli") {
-            return;
-        }
-        
-        $app->getServices()->set('curl', function() use ($app) {
-            return new CurlService(
-                $app->get("curl.proxyhost", null),
-                $app->get("curl.proxyuser", null),
-                $app->get("curl.proxypass", null)
-            );
-        });
+        $git = new GitService($app->get('blog.workdir') .'/repo');
+        $builder = new BuilderService($git);
+
+        $app->getServices()->set('git', $git);
+        $app->getServices()->set('builder', $builder);
     }
 }

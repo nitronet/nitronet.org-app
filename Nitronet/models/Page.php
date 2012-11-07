@@ -1,18 +1,22 @@
 <?php
 namespace Nitronet\models;
 
+use dflydev\markdown\MarkdownExtraParser;
+
 class Page
 {
     protected $slug;
-    
+
     protected $title;
-    
+
     protected $contents;
-    
+
     protected $created_at;
-    
+
     protected $updated_at;
-    
+
+    protected $author;
+
     public function getSlug() {
         return $this->slug;
     }
@@ -33,6 +37,12 @@ class Page
         return $this->contents;
     }
 
+    public function getFormattedContent()
+    {
+        $parser = new MarkdownExtraParser();
+        return $parser->transform($this->contents);
+    }
+
     public function setContents($contents) {
         $this->contents = $contents;
     }
@@ -51,5 +61,13 @@ class Page
 
     public function setUpdated_at($updated_at) {
         $this->updated_at = $updated_at;
+    }
+
+    public function getAuthor() {
+        return $this->author;
+    }
+
+    public function setAuthor($author) {
+        $this->author = $author;
     }
 }

@@ -24,7 +24,7 @@
         <property name="curl.proxyhost"></property>
         <property name="curl.proxyuser" />
         <property name="curl.proxypass" />
-        
+
         <property name="blog.name">nitronet</property>
         <property name="blog.author">neiluJ</property>
         <property name="blog.repository">https://github.com/nitronet/nitronet.org.git</property>
@@ -45,6 +45,16 @@
                 <param name="file">pages/homepage.phtml</param>
             </result>
         </action>
+
+        <action name="PageView" class="Nitronet\actions\PageView" method="show">
+            <result type="template" name="success">
+                <param name="file">pages/page.phtml</param>
+            </result>
+
+            <result type="template" name="error">
+                <param name="file">pages/error.phtml</param>
+            </result>
+        </action>
     </actions>
 
     <commands>
@@ -54,7 +64,8 @@
 
     <url-rewrite>
         <url route="/$" action="Home" />
-        <url route="/$" action="Home" />
-        <url route="/$" action="Home" />
+        <url route="/:pageSlug$" action="PageView">
+            <param name="pageSlug" regex=".*" required="true" />
+        </url>
     </url-rewrite>
 </fwk>

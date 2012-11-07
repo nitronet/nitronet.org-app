@@ -1,0 +1,18 @@
+<?php
+/**
+ * Layout variables
+ *
+ * - FWK_PAGE_TITLE
+ */
+$PAGE_TITLE = htmlspecialchars($this->page->getTitle()) ." - nitronet - Le blog de neiluJ";
+
+include __DIR__ .'/../header.phtml';
+?>
+<div class="container" id="main">
+    <?php echo $this->page->getFormattedContent(); ?>
+</div>
+<?php
+
+include __DIR__ .'/../footer.phtml';
+
+?>

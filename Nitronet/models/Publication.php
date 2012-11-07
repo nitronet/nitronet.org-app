@@ -22,6 +22,8 @@ class Publication
     protected $author;
 
     protected $revision;
+    
+    protected $excerpLength = 300;
 
     public function getSlug() {
         return $this->slug;
@@ -99,6 +101,35 @@ class Publication
 
     public function setDateRelativeUpdated($dateRelativeUpdated) {
         $this->dateRelativeUpdated = $dateRelativeUpdated;
+    }
+
+    public function getExcerp()
+    {
+        $contents = $this->getFormattedContent();
+        $contents = strip_tags($contents);
+        
+        if (strlen($contents) > $this->excerpLength) {
+            $contents = substr($contents, 0, $this->excerpLength);
+            $contents .= '...';
+        }
+        
+        if (false === strpos($contents, '.') 
+            || strpos($contents, '.', strlen($contents))) {
+            return $contents;
+        }
+        
+        $sentences = explode('. ', $contents);
+        array_pop($sentences);
+        
+        return trim(implode('. ', $sentences)) .'.';
+    }
+    
+    public function getExcerpLength() {
+        return $this->excerpLength;
+    }
+
+    public function setExcerpLength($excerpLength) {
+        $this->excerpLength = $excerpLength;
     }
 
 

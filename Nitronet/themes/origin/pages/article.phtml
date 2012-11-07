@@ -14,10 +14,29 @@ include __DIR__ .'/../header.phtml';
     <h1><a href="<?php echo $this->basePath; ?>/index.php/article/<?php echo $this->article->getSlug(); ?>"><?php echo htmlspecialchars($this->article->getTitle()); ?></a></h1>
     <p style="display: block; margin-bottom: 20px; color: #999;">Posted by <strong style="color: #666"><?php echo htmlspecialchars($this->article->getAuthor()); ?></strong>, <?php echo $this->article->getDateRelativeCreated(); ?>.</p>
 
-    <?php echo $this->article->getFormattedContent(); ?>
+    <div class="post">
+        <?php echo $this->article->getFormattedContent(); ?>
+    </div>
+    
+    <div id="disqus">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'nitronet'; // required: replace example with your forum shortname
+            var disqus_identifier = '/article/<?php echo addslashes($this->article->getSlug()); ?>'; 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
 </div>
 
-<div class="container" style="font-size: 10px; color: #ccc; margin-bottom: -50px;">
+<div class="container" style="font-size: 10px; color: #ccc; margin-bottom: -50px; margin-top: 0px;">
     $ rev: <?php echo substr($this->article->getRevision(),0, 6); ?> by <?php echo htmlspecialchars($this->article->getAuthor()); ?>
 <?php
 $updated = $this->article->getUpdated_at();

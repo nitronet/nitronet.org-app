@@ -15,7 +15,8 @@ include __DIR__ .'/../header.phtml';
             <p class="rightside rkktt"><?php echo $article->getDateRelativeCreated(); ?></p>
 
             <h2><a href="<?php echo $this->basePath; ?>/index.php/article/<?php echo $article->getSlug(); ?>"><?php echo htmlspecialchars($article->getTitle()); ?></a></h2>
-            <p>Hello cutie pie. One of us is in deep trouble. Only pain. You're a fucking choir boy compared to me.</p>
+            
+            <p class="post"><?php echo $article->getExcerp(); ?> [<a href="<?php echo $this->basePath; ?>/index.php/article/<?php echo $article->getSlug(); ?>">read</a>]</p>
         </li>
         <?php endforeach; ?>
     </ul>

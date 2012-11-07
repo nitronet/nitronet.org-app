@@ -17,6 +17,13 @@ html, html body {
   src: local('Rokkitt Bold'), url(./fonts/Rokkitt-Bold.ttf);
 }
 
+@font-face {
+  font-family: 'Source Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), url(./fonts/SourceSansPro-Regular.ttf);
+}
+
 div.container {
 	display: block;
 	width: 780px;
@@ -26,6 +33,7 @@ div.container {
 
 #footer {
 	margin-top: 60px;
+        margin-bottom: 60px;
 	padding-top: 10px;
 	border-top: dotted 1px #ccc;
 	color: #aaa;
@@ -80,7 +88,7 @@ h1 span {
   }
 
   to {
-    text-shadow: 0 0 3px #333;
+    text-shadow: 0 0 3px #666;
   }
 }
 
@@ -101,11 +109,8 @@ p {
 	line-height: 20px;
 }
 
-h2 a:hover {
-	animation-duration: 0.5s;
-  	animation-name: shadowBlur;
-	animation-iteration-count: infinite;
-  	animation-direction: alternate;
+.post p, p.post, h1.post {
+    font-family: 'Source Sans', 'Rokkitt-Regular', Helvetica, sans-serif;
 }
 
 li .rightside { 
@@ -120,3 +125,40 @@ li .rightside {
 	color: #666;
 }
 
+#main a {
+    text-decoration:none;
+    color: #4096ee;
+    font-weight:normal;
+}
+
+#main a:hover {
+}
+
+#main p, #main pre, #main h3 {
+    margin-bottom: 20px;
+}
+#main pre {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+    background:transparent !important;
+    line-height: 14px;
+}
+#main pre code {
+    background:transparent !important
+}
+#main h1 {
+}
+
+.post ul {
+    list-style: disc;
+    list-style-position: inside;
+}
+
+
+.post ul li {
+    margin-bottom: 5px;
+}
+
+#disqus {
+    margin-top: 40px;
+}

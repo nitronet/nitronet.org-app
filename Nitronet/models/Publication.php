@@ -5,6 +5,9 @@ use dflydev\markdown\MarkdownExtraParser;
 
 class Publication
 {
+    const DATEFIELD_CREATED_AT = "created_at";
+    const DATEFIELD_UPDATED_AT = "updated_at";
+    
     protected $slug;
 
     protected $title;
@@ -132,5 +135,12 @@ class Publication
         $this->excerpLength = $excerpLength;
     }
 
+    public function dateFormat($dateField, $format = "U")
+    {
+        $value = $this->{$dateField};
+        $datetime = \DateTime::createFromFormat(\DateTime::RFC2822, $value);
+        
+        return $datetime->format($format);
+    }
 
 }

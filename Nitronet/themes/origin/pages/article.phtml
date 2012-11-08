@@ -7,9 +7,11 @@
 $PAGE_TITLE = htmlspecialchars($this->article->getTitle()) ." - nitronet - Le blog de neiluJ";
 
 include __DIR__ .'/../header.phtml';
+use Nitronet\models\Publication;
+
 ?>
 <div class="container" id="main">
-    <p class="rightside rkktt"><?php echo $this->article->getCreated_at(); ?></p>
+    <p class="rightside rkktt"><?php echo $this->article->dateFormat(Publication::DATEFIELD_CREATED_AT, "d F @ H:i:s"); ?></p>
 
     <h1><a href="<?php echo $this->basePath; ?>/index.php/article/<?php echo $this->article->getSlug(); ?>"><?php echo htmlspecialchars($this->article->getTitle()); ?></a></h1>
     <p style="display: block; margin-bottom: 20px; color: #999;">Posted by <strong style="color: #666"><?php echo htmlspecialchars($this->article->getAuthor()); ?></strong>, <?php echo $this->article->getDateRelativeCreated(); ?>.</p>
@@ -41,9 +43,9 @@ include __DIR__ .'/../header.phtml';
 <?php
 $updated = $this->article->getUpdated_at();
 if(!empty($updated)): ?>
-    updated <?php echo $this->article->getDateRelativeUpdated(); ?>
+    updated <span title="<?php echo $this->article->dateFormat(Publication::DATEFIELD_UPDATED_AT, "d F @ H:i:s"); ?>"><?php echo $this->article->getDateRelativeUpdated(); ?></span>.
 <?php else: ?>
-    created <?php echo $this->article->getDateRelativeCreated(); ?>
+    created <span title="<?php echo $this->article->dateFormat(Publication::DATEFIELD_CREATED_AT, "d F @ H:i:s"); ?>"><?php echo $this->article->getDateRelativeCreated(); ?></span>.
 <?php endif; ?>
 </div>
 <?php

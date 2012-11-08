@@ -2,20 +2,17 @@
 namespace Nitronet\actions;
 
 
-use Fwk\Core\Action\Result;
-use Nitronet\runtime\AppController;
 use Symfony\Component\HttpFoundation\Response;
+use Nitronet\models\Publication;
 
-class RssFeed extends AppController
+class RssFeed extends Homepage
 {
-    protected $articles;
-
     public function show()
     {
-        $this->articles = $this->getServices()->get('builder')->getArticles();
-
+        parent::show();
+        
         $response = new Response(
-            $this->articlesToFeed($this->articles)->saveXML(), 
+            $this->articlesToFeed($this->getArticles())->saveXML(), 
             200, 
             array(
                 'Content-Type' => 'application/xml'
@@ -76,7 +73,7 @@ class RssFeed extends AppController
             $item->appendChild($link);
             
             $pDate = $dom->createElement("pubDate");
-            $pDateTxt = $dom->createTextNode("Y/m/d");
+            $pDateTxt = $dom->createTextNode($article->dateFormat(Publication::DATEFIELD_CREATED_AT, \DateTime::RSS));
             $pDate->appendChild($pDateTxt);
             $item->appendChild($pDate);
             

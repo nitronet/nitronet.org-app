@@ -3,11 +3,10 @@ namespace Nitronet\runtime;
 
 use Fwk\Core\ServicesAware,
     Fwk\Core\ContextAware,
-    Fwk\Core\Preparable,
     Fwk\Core\Object,
     Fwk\Core\Context;
 
-abstract class AppController implements ServicesAware, Preparable, ContextAware
+abstract class AppController implements ServicesAware, ContextAware
 {
     /**
      * @var Object
@@ -18,19 +17,6 @@ abstract class AppController implements ServicesAware, Preparable, ContextAware
      * @var Context
      */
     protected $context;
-
-    /**
-     * @var string
-     */
-    protected $basePath;
-
-    /**
-     * @return void
-     */
-    public function prepare()
-    {
-        $this->basePath = $this->getContext()->getRequest()->getBasePath();
-    }
 
     /**
      * @return Object
@@ -66,14 +52,5 @@ abstract class AppController implements ServicesAware, Preparable, ContextAware
     public function setContext(Context $context)
     {
         $this->context = $context;
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function getBasePath()
-    {
-        return $this->basePath;
     }
 }

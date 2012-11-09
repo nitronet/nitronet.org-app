@@ -6,6 +6,7 @@
     <listener class="Fwk\Core\Components\Bootstrap\BootstrapListener" />
     <listener class="Fwk\Core\Components\UrlRewriter\UrlRewriterListener" />
     <listener class="Fwk\Core\Components\ResultType\ResultTypeListener" />
+    <listener class="Fwk\Core\Components\ViewHelper\ViewHelperListener" />
 
     <bootstrap type="Fwk\Core\Components\Bootstrap\ClassBootstrapper">
         Nitronet\runtime\Bootstrap
@@ -28,6 +29,10 @@
             <param name="templatesDir">:packageDir/themes/:theme</param>
         </result-type>
     </result-types>
+
+    <view-helper>
+        <helper name="url" class="Fwk\Core\Components\UrlRewriter\UrlViewHelper" />
+    </view-helper>
 
     <actions>
         <action name="Home" class="Nitronet\actions\Homepage" method="show">
@@ -55,7 +60,7 @@
                 <param name="file">pages/error.phtml</param>
             </result>
         </action>
-        
+
         <action name="RssFeed" class="Nitronet\actions\RssFeed" method="show" />
     </actions>
 

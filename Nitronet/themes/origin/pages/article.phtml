@@ -13,19 +13,19 @@ use Nitronet\models\Publication;
 <div class="container" id="main">
     <p class="rightside rkktt"><?php echo $this->article->dateFormat(Publication::DATEFIELD_CREATED_AT, "d F @ H:i:s"); ?></p>
 
-    <h1><a href="/article/<?php echo $this->article->getSlug(); ?>"><?php echo htmlspecialchars($this->article->getTitle()); ?></a></h1>
+    <h1><a href="<?php echo $this->_helper->url('ArticleView', array('articleSlug' => $this->article->getSlug())); ?>"><?php echo htmlspecialchars($this->article->getTitle()); ?></a></h1>
     <p style="display: block; margin-bottom: 20px; color: #999;">Posted by <strong style="color: #666"><?php echo htmlspecialchars($this->article->getAuthor()); ?></strong>, <?php echo $this->article->getDateRelativeCreated(); ?>.</p>
 
     <div class="post">
         <?php echo $this->article->getFormattedContent(); ?>
     </div>
-    
+
     <div id="disqus">
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'nitronet'; // required: replace example with your forum shortname
-            var disqus_identifier = '/article/<?php echo addslashes($this->article->getSlug()); ?>'; 
+            var disqus_identifier = '/article/<?php echo addslashes($this->article->getSlug()); ?>';
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

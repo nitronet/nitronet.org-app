@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/hljs/styles/github.css">
     <script src="/hljs/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-        
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,7 +28,7 @@
         <p class="rightside rkktt">
             <a href="https://github.com/neiluJ"><img src="/images/social/github.png" title="Github" alt="gh" /></a>
             <a href="http://twitter.com/neiluj34"><img src="/images/social/twitter.png" title="Twitter" alt="tw" /></a>
-            <a href="/rss.xml"><img src="/images/social/rss.png" title="RSS Feed" alt="rss" /></a>
+            <a href="<?php echo $this->_helper->url('RssFeed'); ?>"><img src="/images/social/rss.png" title="RSS Feed" alt="rss" /></a>
         </p>
-        <h1><a href="/">nitronet</a> <span>Le weblog de <a href="http://neiluj.pro">neiluJ</a>, développeur web.</span></h1>
+        <h1><a href="<?php echo $this->_helper->url('Home'); ?>">nitronet</a> <span>Le weblog de <a href="http://neiluj.pro">neiluJ</a>, développeur web.</span></h1>
     </div>

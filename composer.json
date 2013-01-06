@@ -4,7 +4,8 @@
         "fwk/core": "dev-master",
 	"symfony/console": "dev-master",
         "symfony/process": "dev-master",
-        "dflydev/markdown": "dev-master"
+        "dflydev/markdown": "dev-master",
+        "neiluj/assetic-app": "dev-master"
     },
     "autoload": {
         "psr-0": {

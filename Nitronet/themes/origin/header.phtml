@@ -8,11 +8,20 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/css/reset.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="/hljs/styles/github.css">
-    <script src="/hljs/highlight.pack.js"></script>
+    <?php foreach($this->_helper->assets(array(
+        '@Nitronet/themes/origin/assets/css/reset.css',
+        '@Nitronet/themes/origin/assets/css/style.css',
+        '@Nitronet/themes/origin/assets/hljs/styles/github.css'
+    ), array('cssrewrite'), 'site') as $src): ?>
+    <link rel="stylesheet" href="<?php echo $src; ?>">
+    <?php endforeach; ?>
+    
+    <?php foreach($this->_helper->assets(array(
+        '@Nitronet/themes/origin/assets/hljs/highlight.pack.js',
+    ), array('cssrewrite'), 'hljs.pack') as $src): ?>
+    <link rel="stylesheet" href="<?php echo $src; ?>">
+    <?php endforeach; ?>
+    
     <script>hljs.initHighlightingOnLoad();</script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -26,9 +35,9 @@
   <body>
     <div class="container" id="head">
         <p class="rightside rkktt">
-            <a href="https://github.com/neiluJ"><img src="/images/social/github.png" title="Github" alt="gh" /></a>
-            <a href="http://twitter.com/neiluj34"><img src="/images/social/twitter.png" title="Twitter" alt="tw" /></a>
-            <a href="<?php echo $this->_helper->url('RssFeed'); ?>"><img src="/images/social/rss.png" title="RSS Feed" alt="rss" /></a>
+            <a href="https://github.com/neiluJ"><img src="<?php echo array_shift($this->_helper->assets('@Nitronet/themes/origin/assets/images/social/github.png', array(), 'github')); ?>" title="Github" alt="gh" /></a>
+            <a href="http://twitter.com/neiluj34"><img src="<?php echo array_shift($this->_helper->assets('@Nitronet/themes/origin/assets/images/social/twitter.png', array(), 'twitter')); ?>" title="Twitter" alt="tw" /></a>
+            <a href="<?php echo $this->_helper->url('RssFeed'); ?>"><img src="<?php echo array_shift($this->_helper->assets('@Nitronet/themes/origin/assets/images/social/rss.png', array(), 'rss')); ?>" title="RSS Feed" alt="rss" /></a>
         </p>
         <h1><a href="<?php echo $this->_helper->url('Home'); ?>">nitronet</a> <span>Le weblog de <a href="http://neiluj.pro">neiluJ</a>, développeur web.</span></h1>
     </div>

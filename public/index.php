@@ -6,5 +6,4 @@ use Fwk\Core\Application,
 
 $desc = new Descriptor(__DIR__ .'/../Nitronet/fwk.xml');
 $app = new Application($desc);
-$app->setServices(new \Fwk\Core\Object());
 $app->run(\Symfony\Component\HttpFoundation\Request::createFromGlobals());

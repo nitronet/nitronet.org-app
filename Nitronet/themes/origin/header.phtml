@@ -19,7 +19,7 @@
     <?php foreach($this->_helper->assets(array(
         '@Nitronet/themes/origin/assets/hljs/highlight.pack.js',
     ), array('cssrewrite'), 'hljs.pack') as $src): ?>
-    <link rel="stylesheet" href="<?php echo $src; ?>">
+    <script type="text/javascript" src="<?php echo $src; ?>"></script>
     <?php endforeach; ?>
     
     <script>hljs.initHighlightingOnLoad();</script>

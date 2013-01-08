@@ -13,7 +13,7 @@
         Nitronet\runtime\Bootstrap
     </bootstrap>
 
-    <extends path="/home/neiluj/www/njblog/vendor/neiluj/assetic-app/AsseticApp" />
+    <extends path=":vendorDir/neiluj/assetic-app/AsseticApp" />
     
     <properties>
         <property name="theme">origin</property>

@@ -2,8 +2,8 @@
     "require": {
         "php": ">=5.3.0",
         "fwk/core": "dev-master",
-	"symfony/console": "dev-master",
-        "symfony/process": "dev-master",
+	"symfony/console": "2.2.*",
+        "symfony/process": "2.2.*",
         "dflydev/markdown": "dev-master",
         "neiluj/assetic-app": "dev-master"
     },

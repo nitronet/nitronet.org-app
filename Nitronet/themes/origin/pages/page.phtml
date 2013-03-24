@@ -8,8 +8,10 @@ $PAGE_TITLE = htmlspecialchars($this->page->getTitle()) ." - nitronet - Le blog 
 
 include __DIR__ .'/../header.phtml';
 ?>
-<div class="container post" id="main">
-    <?php echo $this->page->getFormattedContent(); ?>
+<div class="container" id="main">
+    <div class="post">
+<?php echo $this->page->getFormattedContent(); ?>
+    </div>
 </div>
 
 <div class="container" style="font-size: 10px; color: #ccc; margin-bottom: -50px;">
